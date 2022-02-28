@@ -35,7 +35,7 @@ const displaySearchReslt = (mobiles) => {
     const searchResult = document.getElementById('search-result');
     searchResult.textContent = '';
     console.log(mobiles.slice(0, 20));
-    mobiles.forEach(mobile => {
+    mobiles.slice(0, 20).forEach(mobile => {
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
