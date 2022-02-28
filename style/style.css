@@ -1,3 +1,6 @@
+#error-message{
+    display: none;
+}
 .header{
      color: rgba(11, 163, 130, 0.863);
      font-weight: bolder;
