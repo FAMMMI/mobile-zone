@@ -15,9 +15,23 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
-<body>
-    <h1 class="header mt-5 mb-5 text-center w-75 mx-auto">Mobile-Bank</h1>
+<body class="w-100">
+    <h1 class="header mt-5 mb-5 text-center w-75 mx-auto">Mobile-Zone</h1>
 
+    <div class="input-group mb-3 w-50 mx-auto">
+        <input type="text" id="search-field" class="form-control" placeholder="Mobile name" aria-label="Mobile name"
+            aria-describedby="button-addon2">
+        <button onclick="searchMobile()" class="btn btn-outline-secondary" type="button"
+            id="search-mobile">Search</button>
+    </div>
+
+    <div>
+        <p id="error-message" class="text-center text-danger">No data found</p>
+    </div>
+
+    <!-- mobile search result -->
+    <div id="search-result" class="row row-cols-1 row-cols-md-3 g-4 w-75 mx-auto">
+    </div>
 
 
     <!-- bootstrap js Connection -->
