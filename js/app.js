@@ -1,6 +1,7 @@
 
 const searchMobile = () => {
     console.log('clicked');
+    document.getElementById('search-result').innerHTML = "";
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
     searchField.value = '';
@@ -26,6 +27,7 @@ const searchMobile = () => {
     }
 }
 // searchMobile();
+
 const displayError = error => {
     document.getElementById('error-message').style.display = error;
 }
@@ -33,7 +35,7 @@ const displayError = error => {
 
 const displaySearchReslt = (mobiles) => {
     const searchResult = document.getElementById('search-result');
-    searchResult.textContent = '';
+    // searchResult.textContent = '';
     console.log(mobiles.slice(0, 20));
     mobiles.slice(0, 20).forEach(mobile => {
         const div = document.createElement('div');
@@ -86,20 +88,20 @@ const showDataDetails = (mobile) => {
         otherFeatures += "Other features not provoded yet."
     }
     div.innerHTML = `
-                <div class="card align-items-center p-2 w-100 mx-auto">
+                <div class="card align-items-center p-2 w-75 mx-auto">
                     <img src="${mobile.image}" class="card-img-top w-25 mx-auto" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">${mobile.name}</h5>
-                        <h6 class="card-title">${mobile.brand}</h6>
-                        <p class="card-text">Storage: ${mobile.mainFeatures.storage}</p>
-                        <p class="card-text">Display Size: ${mobile.mainFeatures.displaySize}</p>
-                        <p class="card-text">Chipset: ${mobile.mainFeatures.chipSet}</p>
-                        <p class="card-text">Memory: ${mobile.mainFeatures.memory}</p>
-                        <p class="card-text">Sensors: ${sensors}</p>
-                        <p class="card-text">Release Data: ${release_date}</p>
-                        <p class="card-text">Other Features: ${otherFeatures}</p>
+                    <div class="card-body mx-auto">
+                        <h3 class="card-title">Name: ${mobile.name}</h3>
+                        <h4 class="card-title">Brand: ${mobile.brand}</h4>
+                        <p class="card-text"><b>Storage:</b> ${mobile.mainFeatures.storage}</p>
+                        <p class="card-text"><b>Display Size:</b> ${mobile.mainFeatures.displaySize}</p>
+                        <p class="card-text"><b>Chipset:</b> ${mobile.mainFeatures.chipSet}</p>
+                        <p class="card-text"><b>Memory:</b> ${mobile.mainFeatures.memory}</p>
+                        <p class="card-text"><b>Sensors:</b> ${sensors}</p>
+                        <p class="card-text"><b>Release Data:</b> ${release_date}</p>
+                        <p class="card-text"><b>Other Features:</b> ${otherFeatures}</p>
                     </div>
                 </div>
-        `
+        `;
     singleDetail_Id.appendChild(div);
 }
