@@ -1,7 +1,36 @@
+/* id unique styles */
+#singleDetails,#search-result{
+    background-color: rgb(232, 241, 241);
+    padding: 0 35px;
+}
+
+#spinner {
+    display: none;
+}
+#error-message-2{
+    display: none;
+}
 #error-message{
     display: none;
 }
+#show-more{
+    display: none;
+}
+/* common styles */
 .header{
-     color: rgba(11, 163, 130, 0.863);
+     color: rgba(31, 146, 121, 0.863);
      font-weight: bolder;
+     font-size: xx-large;
+}
+.button{
+    border: 0;
+    border-radius: 5px;
+    padding: 8px 18px;
+    color: white;
+    background-color: rgb(42, 42, 212);
+    font-size: larger;
+}
+.message{
+    font-size: x-large;
+    font-weight: bolder;
 }
