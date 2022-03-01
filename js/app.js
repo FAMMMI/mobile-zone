@@ -1,7 +1,6 @@
 
 // fetching mobile list from api
 const searchMobile = () => {
-    // console.log('clicked');
     document.getElementById('search-result').innerHTML = "";
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
@@ -9,7 +8,6 @@ const searchMobile = () => {
     singledetails('none');
     displayError2('none');
     showmore('none');
-    searchField.value = '';
     if (searchText == '') {
         displayError2('block');
         displayError('none');
@@ -35,15 +33,13 @@ const searchMobile = () => {
                     displayError('none');
                     displayError2('none');
                 }
-            })
-            .catch(error => displayError(error));
+            });
         displayError('none');
         displayError2('none');
     }
 
 }
-// searchMobile();
-// error message
+// error messages
 const displayError = error => {
     document.getElementById('error-message').style.display = error;
 }
@@ -63,12 +59,10 @@ const showmore = displayStyle => {
     document.getElementById('show-more').style.display = displayStyle;
 }
 
-// display search results
+// display search results for 20 mobiles
 const displaySearchResult = (mobiles) => {
     const searchResult = document.getElementById('search-result');
-    // searchResult.textContent = '';
-    console.log(mobiles.slice(0, 20));
-    mobiles.splice(0, 20).forEach(mobile => {
+    mobiles.slice(0, 20).forEach(mobile => {
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
@@ -83,16 +77,56 @@ const displaySearchResult = (mobiles) => {
         </div>
         `;
         searchResult.appendChild(div);
-    })
+    });
+
+    toggleSpinner('none');
+    singledetails('none');
+    showmore('block');
+
+}
+// extra +++ showing off all result
+// fetching data
+const searchAllMobile = () => {
+    const searchField = document.getElementById('search-field');
+    const searchText = searchField.value;
+    toggleSpinner('block');
+    singledetails('none');
+    displayError2('none');
+    showmore('none');
+    searchField.value = '';
+    const url = `https://openapi.programming-hero.com/api/phones?search=${searchText}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => showAll(data.data))
+}
+// displaying all results
+const showAll = (mobiles) => {
+    const searchResult = document.getElementById('search-result');
+    searchResult.value = '';
+    document.getElementById('search-result').innerHTML = '';
+    mobiles.forEach(mobile => {
+        const div = document.createElement('div');
+        div.classList.add('col');
+        div.innerHTML = `
+        <div class="card bg-light h-100 pt-3 ">
+            <img src="${mobile.image}" class="card-img-top w-50 mx-auto" alt="...">
+                <div class="card-body text-center ">
+                    <h5 class="card-title">Name: ${mobile.phone_name}</h5>
+                    <h5 class="card-text">Brand: ${mobile.brand}</h5>
+                    
+                    <button onclick="loadMobileDetail('${mobile.slug}')" class=" text-center button">details</button>
+                </div>
+        </div>
+        `;
+        searchResult.appendChild(div);
+    });
 
     toggleSpinner('none');
     singledetails('none');
     showmore('none');
-
-
-
-
 }
+
+
 
 
 // fetching mobile details by id
@@ -106,7 +140,6 @@ const loadMobileDetail = (mobileId) => {
 
 // showing mobile details
 const showDataDetails = (mobile) => {
-    // console.log(mobile);
     const singleDetail_Id = document.getElementById('singleDetails');
     singleDetail_Id.innerHTML = "";
     let div = document.createElement('div');
@@ -121,12 +154,10 @@ const showDataDetails = (mobile) => {
         }
         sensors += mobile.mainFeatures.sensors[i] + ", ";
     }
-    // console.log(sensors);
     if (mobile.hasOwnProperty('releaseDate') && mobile.releaseDate != "") release_date += mobile.releaseDate;
     else release_date += "Release Date is Not published";
 
     for (const property in mobile.others) {
-        // console.log(${property}: ${data.others[property]});
         otherFeatures += property + ": " + mobile.others[property] + ", "
     }
     if (otherFeatures == "") {
