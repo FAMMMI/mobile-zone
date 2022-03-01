@@ -72,7 +72,7 @@ const displaySearchResult = (mobiles) => {
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
-        <div class="card bg-light h-100 pt-3 mb-3">
+        <div class="card bg-light h-100 pt-3 ">
             <img src="${mobile.image}" class="card-img-top w-50 mx-auto" alt="...">
                 <div class="card-body text-center ">
                     <h5 class="card-title">Name: ${mobile.phone_name}</h5>
@@ -133,11 +133,11 @@ const showDataDetails = (mobile) => {
         otherFeatures += "Other features are not provoded yet."
     }
     div.innerHTML = `
-                <div class="card align-items-center p-2 w-50 mx-auto bg-light">
-                    <img src="${mobile.image}" class="card-img-top w-25 mx-auto" alt="...">
-                    <div class="card-body mx-auto w-75">
-                        <h3 class="card-title">Name: ${mobile.name}</h3>
-                        <h4 class="card-title">Brand: ${mobile.brand}</h4>
+                <div class="card align-items-center p-2 w-75 mx-auto bg-light">
+                    <img src="${mobile.image}" class="card-img-top w-50 mx-auto" alt="...">
+                    <div class="card-body mx-auto w-100">
+                        <h5 class="card-title">Name: ${mobile.name}</h5>
+                        <h6 class="card-title"><strong>Brand: ${mobile.brand}</strong></h6>
                         <p class="card-text"><b>Storage:</b> ${mobile.mainFeatures.storage}</p>
                         <p class="card-text"><b>Display Size:</b> ${mobile.mainFeatures.displaySize}</p>
                         <p class="card-text"><b>Chipset:</b> ${mobile.mainFeatures.chipSet}</p>

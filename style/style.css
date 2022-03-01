@@ -1,7 +1,7 @@
 /* id unique styles */
 #singleDetails,#search-result{
     background-color: rgb(232, 241, 241);
-    padding: 0 35px;
+    padding:0 35px;
 }
 
 #spinner {
@@ -18,7 +18,7 @@
 }
 /* common styles */
 .header{
-     color: rgba(31, 146, 121, 0.863);
+     color: rgba(67, 5, 235, 0.973);
      font-weight: bolder;
      font-size: xx-large;
 }
