@@ -155,7 +155,7 @@ const showDataDetails = (mobile) => {
         sensors += mobile.mainFeatures.sensors[i] + ", ";
     }
     if (mobile.hasOwnProperty('releaseDate') && mobile.releaseDate != "") release_date += mobile.releaseDate;
-    else release_date += "Release Date is Not published";
+    else release_date += "Release Date is Not published .";
 
     for (const property in mobile.others) {
         otherFeatures += property + ": " + mobile.others[property] + ", "
@@ -176,7 +176,7 @@ const showDataDetails = (mobile) => {
                         <p class="card-text"><b>Sensors:</b> '${sensors}'</p>
                         <p class="card-text"><b>Release Data:</b> ${release_date}</p>
                         <p class="card-text"><b>Other Features:</b> <br>
-                        ${otherFeatures} .<br>
+                        ${otherFeatures} <br>
                         
                         </p>
                     </div>
